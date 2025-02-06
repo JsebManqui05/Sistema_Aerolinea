@@ -4,12 +4,17 @@
  */
 package Logica_Cliente;
 
+import Helpers.HelperImpresion;
+import Helpers.IHelperImpresion;
 import Logica_Negocio.Ala;
 import Logica_Negocio.Avion;
 import Logica_Negocio.Fuselaje;
 import Logica_Negocio.Llanta;
 import Logica_Negocio.Motor;
 import Logica_Negocio.Pasajero;
+import Logica_Negocio.PasajeroComun;
+import Logica_Negocio.PasajeroVip;
+import Logica_Negocio.Vuelo;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -25,8 +30,9 @@ public class Main {
     public static void main(String[] args) {
         // Declaracion de variables
         //Pasajero
-        String Codigo_Cliente = "", Nombre = "", Apellido = "";
+        String Codigo_Cliente = "", Nombre = "", Apellido = "", Num_silla = "";
         int Identificacion = 0;
+        int TipoPasajero = 0;
 
         //Avion
         String Marca = "";
@@ -52,6 +58,10 @@ public class Main {
         //Scanner
         Scanner scan = new Scanner(System.in);
 
+        //Vuelo
+        String Aerolinea = "";
+        int Id_Vuelo = 0;
+
         Pasajero objpasajero;
         Avion objavion;
         Fuselaje objfuselaje;
@@ -59,8 +69,8 @@ public class Main {
         Motor objmotor;
         Ala objala;
 
-        //Solicitar informacion
-        System.out.println("******** INFORMACION DEL PASAJERO **********");
+        //Solicitar informacion del pasajero
+        System.out.println("-------- INFORMACION DEL PASAJERO --------");
         System.out.println("\n");
         System.out.println("Ingrese el codigo de cliente del pasajero: ");
         Codigo_Cliente = scan.nextLine();
@@ -70,20 +80,33 @@ public class Main {
 
         System.out.println("Ingrese el apellido del pasajero: ");
         Apellido = scan.nextLine();
+        
+        System.out.println("Ingrese el numero de silla del pasajero: ");
+        Num_silla = scan.nextLine();
 
         System.out.println("Ingrese el numero de indentificacion del pasajero: ");
         Identificacion = scan.nextInt();
-        System.out.println("\n");
         scan.nextLine();
+        System.out.println("\n");
 
-        System.out.println("******** INFORMACION DEL AVION **********");
+        //Elegir el tipo de pasajero
+        do {
+            System.out.println("Seleccione el tipo de pasajero: ");
+            System.out.println("1. Pasajero Comun");
+            System.out.println("2. Pasajero VIP");
+            TipoPasajero = scan.nextInt();
+            scan.nextLine();
+        } while (TipoPasajero != 1 && TipoPasajero != 2);
+
+        //Solicitar la infromacion del avion
+        System.out.println("-------- INFORMACION DEL AVION --------");
         System.out.println("\n");
         System.out.println("Ingrese la marca del avion: ");
         Marca = scan.nextLine();
 
-        System.out.println("Ingrese el tipo del suselaje: ");
+        System.out.println("Ingrese el tipo del fuselaje: ");
         Nombre_fuselaje = scan.nextLine();
-        objfuselaje = new Fuselaje(Nombre);
+        objfuselaje = new Fuselaje(Nombre_fuselaje);
 
         System.out.println("Ingrese el numero de motores del avion");
         cant_motor = scan.nextInt();
@@ -114,12 +137,48 @@ public class Main {
         scan.nextLine();
 
         for (int i = 0; i < cant_alas; i++) {
-            System.out.println("Ingrese la posicion del ala " + 1 + i + ":");
+            System.out.println("Ingrese la posicion del ala " + (i + 1) + ":");
             Posicion = scan.nextLine();
             objala = new Ala(Posicion);
             list_alas.add(objala);
 
         }
+
+        //Creacion del objeto avion
+        objavion = new Avion(Marca, objfuselaje, list_motores, list_alas, list_llantas);
+
+        //Solicitar la informacion del vuelo
+        System.out.println("-------- INFORMACION DEL VUELO --------");
+        System.out.println("\n");
+        System.out.println("Ingrese la Aerolinea del vuelo: ");
+        Aerolinea = scan.nextLine();
+
+        System.out.println("Ingrese el identificador del vuelo: ");
+        Id_Vuelo = scan.nextInt();
+        scan.nextLine();
+
+        //Creacion del objeto pasajero
+        if (TipoPasajero == 1) {
+            objpasajero = new PasajeroComun(Codigo_Cliente, Nombre, Apellido, Num_silla, Identificacion);
+
+        } else {
+            objpasajero = new PasajeroVip(Codigo_Cliente, Nombre, Apellido, Num_silla, Identificacion);
+        }
+
+        //Creacion del objeto Vuelo
+        Vuelo objvuelo = new Vuelo(Aerolinea, objavion, objpasajero, Id_Vuelo);
+
+        //Creo una instancia de helper impresion usando la interfaz
+        IHelperImpresion helper = new HelperImpresion();
+
+        //Imprimir ticket
+        helper.ImprimirInfoVuelo(objvuelo);
+
+        //System.out.println("\n******** RESUMEN DEL VUELO **********");
+        //System.out.println("Aerolínea: " + Aerolinea);
+        //System.out.println("ID del vuelo: " + Id_Vuelo);
+        //System.out.println("Pasajero: " + Nombre + " " + Apellido + " (ID: " + Identificacion + ")");
+        //System.out.println("Avión: " + Marca + " con " + cant_motor + " motores, " + cant_alas + " alas y " + cant_llantas + " llantas.");
     }
 
 }

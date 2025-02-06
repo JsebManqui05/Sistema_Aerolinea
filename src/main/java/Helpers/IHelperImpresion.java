@@ -4,10 +4,13 @@
  */
 package Helpers;
 
+import Logica_Negocio.Vuelo;
+
 /**
  *
  * @author Sebastian Manquillo
  */
 public interface IHelperImpresion {
-    
+
+    void ImprimirInfoVuelo(Vuelo objvuelo);
 }

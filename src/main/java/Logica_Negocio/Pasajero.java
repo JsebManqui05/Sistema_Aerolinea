@@ -14,6 +14,7 @@ public abstract class Pasajero {
     public String Codigo_Cliente;
     public String Nombre;
     public String Apellido;
+    public String Num_Silla;
     public int Identificacion;
 
     //Constructor no parametrizado
@@ -21,10 +22,11 @@ public abstract class Pasajero {
     }
 
     //Constructor parametrizado
-    public Pasajero(String Codigo_Cliente, String Nombre, String Apellido, int Identificacion) {
+    public Pasajero(String Codigo_Cliente, String Nombre, String Apellido, String Num_Silla, int Identificacion) {
         this.Codigo_Cliente = Codigo_Cliente;
         this.Nombre = Nombre;
         this.Apellido = Apellido;
+        this.Num_Silla = Num_Silla;
         this.Identificacion = Identificacion;
     }
 
@@ -51,6 +53,14 @@ public abstract class Pasajero {
 
     public void setApellido(String Apellido) {
         this.Apellido = Apellido;
+    }
+
+    public String getNum_Silla() {
+        return Num_Silla;
+    }
+
+    public void setNum_Silla(String Num_Silla) {
+        this.Num_Silla = Num_Silla;
     }
 
     public int getIdentificacion() {
