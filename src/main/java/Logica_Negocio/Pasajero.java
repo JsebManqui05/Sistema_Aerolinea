@@ -15,14 +15,14 @@ public abstract class Pasajero {
     public String Nombre;
     public String Apellido;
     public String Num_Silla;
-    public int Identificacion;
+    public String Identificacion;
 
     //Constructor no parametrizado
     public Pasajero() {
     }
 
     //Constructor parametrizado
-    public Pasajero(String Codigo_Cliente, String Nombre, String Apellido, String Num_Silla, int Identificacion) {
+    public Pasajero(String Codigo_Cliente, String Nombre, String Apellido, String Num_Silla, String Identificacion) {
         this.Codigo_Cliente = Codigo_Cliente;
         this.Nombre = Nombre;
         this.Apellido = Apellido;
@@ -31,6 +31,7 @@ public abstract class Pasajero {
     }
 
     //Setters and getters
+
     public String getCodigo_Cliente() {
         return Codigo_Cliente;
     }
@@ -63,11 +64,11 @@ public abstract class Pasajero {
         this.Num_Silla = Num_Silla;
     }
 
-    public int getIdentificacion() {
+    public String getIdentificacion() {
         return Identificacion;
     }
 
-    public void setIdentificacion(int Identificacion) {
+    public void setIdentificacion(String Identificacion) {
         this.Identificacion = Identificacion;
     }
 

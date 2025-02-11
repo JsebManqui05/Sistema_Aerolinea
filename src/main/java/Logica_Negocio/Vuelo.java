@@ -15,17 +15,19 @@ public class Vuelo {
     //  Declaracion de atributos
     public String Aerolinea;
     public Avion objavion;
+    public Fecha objfecha;
     public Pasajero objpasajero;
-    public int Id_Vuelo;
+    public String Id_Vuelo;
 
     //Constructor no parametrizado
     public Vuelo() {
     }
 
     //Constuctor parametrizado
-    public Vuelo(String Aerolinea, Avion objavion, Pasajero objpasajero, int Id_Vuelo) {
+    public Vuelo(String Aerolinea, Avion objavion, Fecha objfecha, Pasajero objpasajero, String Id_Vuelo) {
         this.Aerolinea = Aerolinea;
         this.objavion = objavion;
+        this.objfecha = objfecha;
         this.objpasajero = objpasajero;
         this.Id_Vuelo = Id_Vuelo;
     }
@@ -47,6 +49,14 @@ public class Vuelo {
         this.objavion = objavion;
     }
 
+    public Fecha getObjfecha() {
+        return objfecha;
+    }
+
+    public void setObjfecha(Fecha objfecha) {
+        this.objfecha = objfecha;
+    }
+
     public Pasajero getObjpasajero() {
         return objpasajero;
     }
@@ -55,11 +65,11 @@ public class Vuelo {
         this.objpasajero = objpasajero;
     }
 
-    public int getId_Vuelo() {
+    public String getId_Vuelo() {
         return Id_Vuelo;
     }
 
-    public void setId_Vuelo(int Id_Vuelo) {
+    public void setId_Vuelo(String Id_Vuelo) {
         this.Id_Vuelo = Id_Vuelo;
     }
 

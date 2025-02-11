@@ -11,8 +11,7 @@ package Logica_Negocio;
 public class PasajeroVip extends Pasajero {
 
     //Constructor
-    public PasajeroVip(String Codigo_Cliente, String Nombre, String Apellido, String Num_Silla, int Identificacion) {
+    public PasajeroVip(String Codigo_Cliente, String Nombre, String Apellido, String Num_Silla, String Identificacion) {
         super(Codigo_Cliente, Nombre, Apellido, Num_Silla, Identificacion);
     }
-
 }

@@ -28,6 +28,7 @@ public class HelperImpresion implements IHelperImpresion {
         System.out.println("***** Vuelo *****");
         System.out.println("Identificador del vuelo: " + "\t" + objvuelo.getId_Vuelo());
         System.out.println("Aerolinea: " + "\t" + objvuelo.getAerolinea());
+        System.out.println("Fecha: " + "\t" + objvuelo.getObjfecha().getObjdia().getDia() + " " + objvuelo.getObjfecha().getObjmes().getMes() + " " + objvuelo.getObjfecha().getObjaño().getAño());
         System.out.println("\n");
         System.out.println("***** Pasajero *****");
         System.out.println("Nombre del pasajero: : " + "\t" + objvuelo.getObjpasajero().getNombre() + " " + objvuelo.getObjpasajero().getApellido());
@@ -49,10 +50,12 @@ public class HelperImpresion implements IHelperImpresion {
         for (int i = 0; i < list_alas.size(); i++) {
             System.out.println("Ala " + (i + 1) + ": " + list_alas.get(i).getPosicion());
         }
+        System.out.println("\n");
 
         for (int i = 0; i < list_llantas.size(); i++) {
             System.out.println("Llanta " + (i + 1) + ": " + list_llantas.get(i).getTamaño_Llanta());
         }
+        System.out.println("\n");
 
         for (int i = 0; i < list_motores.size(); i++) {
             System.out.println("Motor " + (i + 1) + ": " + list_motores.get(i).getTamaño_Motor());

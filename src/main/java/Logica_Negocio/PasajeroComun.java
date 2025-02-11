@@ -11,7 +11,7 @@ package Logica_Negocio;
 public class PasajeroComun extends Pasajero {
 
     //Constructor
-    public PasajeroComun(String Codigo_Cliente, String Nombre, String Apellido, String Num_Silla, int Identificacion) {
+    public PasajeroComun(String Codigo_Cliente, String Nombre, String Apellido, String Num_Silla, String Identificacion) {
         super(Codigo_Cliente, Nombre, Apellido, Num_Silla, Identificacion);
     }
 
